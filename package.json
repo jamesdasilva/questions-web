@@ -1,0 +1,24 @@
+{
+  "name": "answers-web",
+  "version": "1.0.0",
+  "description": "Aplicação front-end de perguntas e respostas",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamesdasilva/answers-web.git"
+  },
+  "keywords": [],
+  "author": "James Oliveira da Silva <jamesodas@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamesdasilva/answers-web/issues"
+  },
+  "homepage": "https://github.com/jamesdasilva/answers-web#readme",
+  "devDependencies": {
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  }
+}
