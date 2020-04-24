@@ -1,5 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 import './questions-page.scss';
 
@@ -8,7 +10,7 @@ const QuestionsPage = () => {
     <div className="questions-page">
       <div className="header">
         <div className="header__container">
-          <div className="header__title">Answer!</div>
+          <div className="header__title"><FontAwesomeIcon icon={faCoffee} size="xs" /> Answer!</div>
         </div>
       </div>
       <div className="content">
