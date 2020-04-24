@@ -1,8 +1,10 @@
 import React from 'react';
 
+import './app.scss'
+
 const App = () => {
   return (
-    <div>Testando...</div>
+    <div className="answers">Testando...</div>
   );
 };
 
