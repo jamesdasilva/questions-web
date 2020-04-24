@@ -2,10 +2,10 @@ import React from 'react';
 
 //import './app.scss';
 
-const AnswerPage = () => {
+const Answers = () => {
   return (
     <div>Answer Page</div>
   );
 };
 
-export default AnswerPage;
+export default Answers;

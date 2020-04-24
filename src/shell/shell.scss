@@ -1,4 +1,4 @@
-.questions-page {
+.shell {
   background-color: #f00;
 }
 .header {
@@ -14,9 +14,14 @@
     width: 800px;
     height: 50px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
   }
   &__title {
+    font-size: 30px;
+    color: #F94A3F;
+  }
+  &__config {
     font-size: 30px;
     color: #F94A3F;
   }
