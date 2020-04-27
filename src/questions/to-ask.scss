@@ -1,0 +1,33 @@
+.to-ask {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+  &__input-ask {
+    box-sizing: border-box;
+    width: calc(100% - 140px);
+    height: 40px;
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  &__submit-btn {
+    box-sizing: border-box;
+    width: 140px;
+    height: 40px;
+    padding: 6px 30px 4px;
+    border: 0px solid #1583D6;
+    border-radius: 4px;
+    font-size: 16px;
+    line-height: 14px;
+    font-family: 'Baloo Bhaina 2', cursive;
+    font-weight: 700;
+    background-color: #1583D6;
+    color: #fff;
+  }
+  &__form-row {
+    width: 100%;
+    display: flex;
+  }
+}

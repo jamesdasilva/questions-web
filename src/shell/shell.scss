@@ -8,6 +8,7 @@
   right: 0;
   height: 50px;
   display: flex;
+  padding: 0 10px;
   justify-content: center;
   background-color: #FFFFFF;
   &__container {
@@ -19,6 +20,7 @@
   }
   &__title {
     font-size: 30px;
+    font-family: 'Baloo Bhaina 2', cursive;
     color: #F94A3F;
   }
   &__config {
@@ -33,7 +35,7 @@
   background-color: #DAE0E6;
   &__container {
     width: 800px;
-    height: 500px;
+    height: 100vh;
     display: flex;
   }
 }
