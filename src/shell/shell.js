@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCommentDots, faCog } from '@fortawesome/free-solid-svg-icons';
 import { Switch, Route } from 'react-router-dom';
 
-import Questions from '../questions/questions';
-import Answers from '../answers/answers';
+import Questions from '../questions/_questions';
+import Answers from '../answers/_answers';
 
 import './shell.scss';
 
@@ -25,12 +24,8 @@ const Shell = () => {
       <div className="content">
         <div className="content__container">
           <Switch>
-            <Route path="/" exact>
-              <Questions />
-            </Route>
-            <Route path="/answers">
-              <Answers />
-            </Route>
+            <Route exact path="/" component={Questions} />
+            <Route exact path="/answers/:id" component={Answers} />
           </Switch>
         </div>
       </div>

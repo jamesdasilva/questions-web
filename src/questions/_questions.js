@@ -3,11 +3,14 @@ import Question from './question';
 import ToAsk from './to-ask';
 import ToSearch from './to-search';
 
-import './questions.scss';
+import { Link } from 'react-router-dom';
+
+import './_questions.scss';
 
 const Questions = () => {
   return (
     <div className="questions">
+      <Link to="/answers/12" >Ir para answers page</Link>
       <ToAsk />
       <ToSearch />
       <Question />
