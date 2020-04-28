@@ -4,7 +4,7 @@ import { createBrowserHistory } from "history";
 
 const customHistory = createBrowserHistory();
 
-import Shell from './shell/shell';
+import Shell from './_shell/shell';
 
 import './app.scss';
 

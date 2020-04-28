@@ -4,12 +4,12 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 import './author.scss';
 
-const Author = () => {
+const Author = (props) => {
   return (
     <h5 className="author">
       <span className="author__icon">
         <FontAwesomeIcon icon={faUser} size="1x" />
-      </span>Test Author
+      </span> { props.children }
     </h5>
   );
 };
