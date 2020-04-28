@@ -1,0 +1,9 @@
+{
+	"version": "2.0.0",
+	"schema": [{
+		"id": "idAutoIncrement",
+		"text": "paragraph",
+		"user": "word",
+		"creationDate": "date:2014;2019"
+	}]
+  }

@@ -1,0 +1,10 @@
+{
+	"version": "2.0.0",
+	"schema": [{
+		"id": "idAutoIncrement",
+		"text": "paragraph",
+		"user": "word",
+		"creationDate": "date:2014;2019",
+		"questionId": "enum:1;2;3;4;5;6;7;8;9;10"
+	}]
+  }
