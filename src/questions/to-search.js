@@ -5,6 +5,9 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import './to-search.scss';
 
 const ToSearch = (props) => {
+  const onChangeHandler = (e) => {
+    props.change(e.target.value);
+  }
   return (
     <form className="to-search">
       <div className="to-search__icon">
@@ -15,7 +18,7 @@ const ToSearch = (props) => {
         type="text"
         placeholder="Pequisar..."
         value={ props.children }
-        onChange={ (e) => props.change(e.target.value) } />
+        onChange={ onChangeHandler  } />
     </form>
   );
 };

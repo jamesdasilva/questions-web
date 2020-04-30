@@ -13,10 +13,10 @@ const Questions = () => {
   const [newSearch, setNewSearch] = useState('');
 
   useEffect(() => {
-    getQuestions().then(data => {
+    getQuestions(newSearch, 10, 1).then(data => {
       setQuestions(data.data);
     });
-  }, []);
+  }, [newSearch]);
 
   const askChangeHandler = (e) => {
     setNewQuestion(e);
