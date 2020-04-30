@@ -3,27 +3,40 @@ import Question from './question';
 import ToAsk from './to-ask';
 import ToSearch from './to-search';
 
-import { Link } from 'react-router-dom';
-
 import getQuestions from '../_api/questionsAPI';
 
 import './_questions.scss';
 
 const Questions = () => {
   const [questions, setQuestions] = useState([]);
+  const [newQuestion, setNewQuestion] = useState('');
+  const [newSearch, setNewSearch] = useState('');
+
   useEffect(() => {
     getQuestions().then(data => {
       setQuestions(data.data);
     });
   }, []);
+
+  const askChangeHandler = (e) => {
+    setNewQuestion(e);
+  }
+
+  const searchChangeHandler = (e) => {
+    setNewSearch(e);
+  }
+
   return (
     <div className="questions">
-      <Link to="/answers/12" >Ir para answers page</Link>
-      <ToAsk />
-      <ToSearch />
+      <ToAsk change={askChangeHandler}>{ newQuestion }</ToAsk>
+      <ToSearch change={searchChangeHandler}>{ newSearch }</ToSearch>
       {
         questions.map(
-          (q) => <Question key={q.id} author={q.user} date={q.creationDate}>{q.text}</Question>
+          (q) => <Question 
+            key={q.id} 
+            id={q.id} 
+            author={q.user} 
+            date={q.creationDate}>{q.text}</Question>
         )
       }
       <button className="questions__load-more-btn">Carregar mais uma pergunta</button>

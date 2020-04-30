@@ -4,13 +4,13 @@ import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 
 import './to-like.scss';
 
-const ToLike = () => {
+const ToLike = (props) => {
   return (
-    <div className="to-like">
+    <div className="to-like" onClick={ props.click }>
       <span className="to-like__icon">
-        <FontAwesomeIcon icon={faThumbsUp} size="1x" />
+        <FontAwesomeIcon icon={ faThumbsUp } size="1x" />
       </span>
-      11
+      { props.children }
     </div>
   );
 };

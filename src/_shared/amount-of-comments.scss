@@ -1,0 +1,23 @@
+.amount-of-comments {
+  margin: 0;
+  margin-right: 20px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #878A8C;
+  a {
+    color: #878A8C;
+    text-decoration: none;
+    &:hover {
+      color: #1583D6;
+      opacity: 0.7;
+    }
+    &:active {
+      color: #1583D6;
+      opacity: 1.0;
+    }
+  }
+  
+  &__icon {
+    margin-right: 6px;
+  }
+}

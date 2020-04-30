@@ -4,16 +4,18 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import './to-search.scss';
 
-const ToSearch = () => {
+const ToSearch = (props) => {
   return (
     <form className="to-search">
-        <div className="to-search__icon">
-          <FontAwesomeIcon icon={faSearch} size="1x" />
-        </div>
-        <input 
-          className="to-search__input"
-          type="text"
-          placeholder="Pequisar..." />
+      <div className="to-search__icon">
+        <FontAwesomeIcon icon={faSearch} size="1x" />
+      </div>
+      <input 
+        className="to-search__input"
+        type="text"
+        placeholder="Pequisar..."
+        value={ props.children }
+        onChange={ (e) => props.change(e.target.value) } />
     </form>
   );
 };

@@ -13,6 +13,10 @@
     font-size: 16px;
     color: #1a1a1b;
     font-family: 'Baloo Bhaina 2', cursive;
+    a {
+      color: #1a1a1b;
+      text-decoration: none;
+    }
   }
   &__info-actions {
     display: flex;
@@ -45,6 +49,7 @@
     font-weight: 700;
     background-color: #fff;
     color: #1583D6;
+    text-decoration: none;
   }
   &__icon {
     margin-right: 6px;
