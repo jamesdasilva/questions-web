@@ -25,6 +25,9 @@ const ToPaginate = (props) => {
     }
     return pages;
   }
+  const setClassPageNumber = (isSelected) => {
+    return `to-paginate__page-number${isSelected ? ' to-paginate__page-number--selected' : ''}`;
+  }
   return (
     <div className="to-paginate">
       <div className="to-paginate__prev" onClick={ comeBack }>
@@ -33,7 +36,7 @@ const ToPaginate = (props) => {
       { 
         generatePages().map(page => {
         return <div key={ page }
-          className="to-paginate__page-number" 
+          className={setClassPageNumber( page == props.currentPage)} 
           onClick={ goToPage }>{ page }</div>
         }) 
       }

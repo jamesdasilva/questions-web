@@ -1,0 +1,17 @@
+.to-sort {
+  display: flex;
+  font-family: 'Baloo Bhaina 2', cursive;
+  font-weight: 700;
+  color: #878A8C;
+  &__key {
+    margin-left: 20px;
+    color: #1583D6;
+    cursor: pointer;
+    span {
+      margin-right: 5px;
+    }
+  }
+  &__key:active, &__key--active {
+    color: #F94A3F;
+  }
+}

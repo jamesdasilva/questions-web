@@ -3,6 +3,7 @@ import Question from './question';
 import ToAsk from './to-ask';
 import ToSearch from './to-search';
 import ToPaginate from './to-paginate';
+import ToSort from './to-sort';
 
 import { getQuestions, postQuestion } from '../_api/questions-api';
 
@@ -33,6 +34,7 @@ const Questions = () => {
   return (
     <div className="questions">
       <ToAsk submit={ submitHandler } />
+      <ToSort />
       <ToSearch
         change={ searchChangeHandler }>
         { queryText }

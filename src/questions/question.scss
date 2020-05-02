@@ -11,8 +11,9 @@
     margin-bottom: 10px;
     line-height: 24px;
     font-size: 16px;
-    color: #1a1a1b;
-    font-family: 'Baloo Bhaina 2', cursive;
+    color: rgb(61, 61, 61);
+    font-family: 'Permanent Marker', cursive;
+    letter-spacing: 1px;
     a {
       color: #1a1a1b;
       text-decoration: none;
@@ -41,7 +42,9 @@
   }
   &__answer {
     padding: 6px 30px 4px;
-    border: 2px solid #1583D6;
+    border: 1px solid #1583D6;
+    border-right: 3px solid #1583D6;
+    border-bottom: 3px solid #1583D6;
     border-radius: 4px;
     font-size: 14px;
     line-height: 14px;
@@ -50,6 +53,7 @@
     background-color: #fff;
     color: #1583D6;
     text-decoration: none;
+  
   }
   &__icon {
     margin-right: 6px;
