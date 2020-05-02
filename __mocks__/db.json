@@ -1,10 +1,11 @@
 {
   "questions": [
     {
-      "id": 1,
-      "text": "Possimus praesentium praesentium cumque eius consectetur eligendi minus. Dolore voluptatibus fuga voluptatem ratione. Impedit neque similique quaerat mollitia quaerat qui nostrum aspernatur. Dolor omnis libero illum asperiores qui. Aut nisi aliquid voluptate et esse ipsa. Ipsum et aperiam eligendi repellendus autem.",
-      "user": "incidunt",
-      "creationDate": "2017-05-10T17:30:47.000Z"
+      "text": "dfdfdsfs\nfdfsdfsd",
+      "user": "user teste",
+      "creationDate": "2020-05-02T13:32:33.474Z",
+      "likesCount": 1,
+      "id": 1
     },
     {
       "id": 2,
@@ -334,6 +335,7 @@
       "text": "dfdfdsfs\nfdfsdfsd",
       "user": "user teste",
       "creationDate": "2020-05-02T13:32:33.474Z",
+      "likesCount": 7,
       "id": 56
     }
   ],

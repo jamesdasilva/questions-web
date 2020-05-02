@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-export const getQuestions = (query, limit, page) => {
+export const getQuestions = (query, sortKey, limit, page) => {
 
   const params = [
     query ? `q=${query}` : false,
     limit ? `_limit=${limit}` : false,
     page ? `_page=${page}` : false,
-    '_sort=creationDate',
+    sortKey ? `_sort=${sortKey}` : false,
     '_order=DESC'
   ];
 

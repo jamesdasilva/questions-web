@@ -12,15 +12,20 @@ import './_questions.scss';
 const Questions = () => {
   const [questions, setQuestions] = useState([]);
   const [numberTotalOfquestions, setNumberTotalOfquestions] = useState(0);
+  const [sortKey, setSortKey] = useState('data de criação');
   const [queryText, setQueryText] = useState('');
   const [page, setPage] = useState(1);
 
+  const keys = { };
+  keys['data de criação'] = 'creationDate';
+  keys['número de curtidas'] = 'id';
+
   useEffect(() => {
-    getQuestions(queryText, 5, page).then(data => {
+    getQuestions(queryText, keys[sortKey], 5, page).then(data => {
       setNumberTotalOfquestions(data.headers['x-total-count']);
       setQuestions(data.data);
     });
-  }, [queryText, page]);
+  }, [queryText, sortKey, page]);
 
   const searchChangeHandler = (e) => {
     setQueryText(e);
@@ -34,7 +39,7 @@ const Questions = () => {
   return (
     <div className="questions">
       <ToAsk submit={ submitHandler } />
-      <ToSort />
+      <ToSort currentKey={sortKey} onSelect={ setSortKey }  />
       <ToSearch
         change={ searchChangeHandler }>
         { queryText }
