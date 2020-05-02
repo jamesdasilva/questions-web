@@ -2,44 +2,55 @@ import React, { useState, useEffect } from 'react';
 import Question from './question';
 import ToAsk from './to-ask';
 import ToSearch from './to-search';
+import ToPaginate from './to-paginate';
 
-import getQuestions from '../_api/questionsAPI';
+import { getQuestions, postQuestion } from '../_api/questions-api';
 
 import './_questions.scss';
 
 const Questions = () => {
   const [questions, setQuestions] = useState([]);
-  const [newQuestion, setNewQuestion] = useState('');
-  const [newSearch, setNewSearch] = useState('');
+  const [numberTotalOfquestions, setNumberTotalOfquestions] = useState(0);
+  const [queryText, setQueryText] = useState('');
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    getQuestions(newSearch, 10, 1).then(data => {
+    getQuestions(queryText, 5, page).then(data => {
+      setNumberTotalOfquestions(data.headers['x-total-count']);
       setQuestions(data.data);
     });
-  }, [newSearch]);
-
-  const askChangeHandler = (e) => {
-    setNewQuestion(e);
-  }
+  }, [queryText, page]);
 
   const searchChangeHandler = (e) => {
-    setNewSearch(e);
+    setQueryText(e);
+    setPage(1);
+  }
+
+  const submitHandler = (questionText) => {
+    postQuestion(questionText, 'user teste').then(res => console.log('res ', res));
   }
 
   return (
     <div className="questions">
-      <ToAsk change={askChangeHandler}>{ newQuestion }</ToAsk>
-      <ToSearch change={searchChangeHandler}>{ newSearch }</ToSearch>
+      <ToAsk submit={ submitHandler } />
+      <ToSearch
+        change={ searchChangeHandler }>
+        { queryText }
+      </ToSearch>
       {
         questions.map(
           (q) => <Question 
-            key={q.id} 
-            id={q.id} 
-            author={q.user} 
-            date={q.creationDate}>{q.text}</Question>
+            key={ q.id } 
+            id={ q.id } 
+            author={ q.user } 
+            date={ q.creationDate }>{ q.text }</Question>
         )
       }
-      <button className="questions__load-more-btn">Carregar mais uma pergunta</button>
+      <ToPaginate
+        currentPage={ page }
+        quantityPerPage= { 5 }
+        totalAmount={ numberTotalOfquestions }
+        onPage={ setPage } />
     </div>
   );
 };

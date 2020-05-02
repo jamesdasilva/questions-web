@@ -1,0 +1,55 @@
+.to-paginate {
+  display: flex;
+  justify-content: center;
+  font-family: 'Baloo Bhaina 2', cursive;
+  font-weight: 700;
+  cursor: pointer;
+  &__prev {
+    box-sizing: border-box;
+    width: 40px;
+    height: 30px;
+    border: 2px solid #1583D6;
+    border-right: 0;
+    border-radius: 4px 0 0 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    line-height: 20px;
+    background-color: #fff;
+    color: #1583D6;
+  }
+  &__page-number {
+    box-sizing: border-box;
+    width: 40px;
+    height: 30px;
+    padding-top: 5px;
+    border: 2px solid #1583D6;
+    border-left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    line-height: 20px;
+    background-color: #fff;
+    color: #1583D6;
+  }
+  &__page-number:nth-child(2) {
+    border-left: 2px solid #1583D6;
+  }
+  &__next {
+    box-sizing: border-box;
+    width: 40px;
+    height: 30px;
+    border: 2px solid #1583D6;
+    border-left: 0;
+    border-radius: 0 4px 4px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    line-height: 20px;
+    background-color: #fff;
+    color: #1583D6;
+  }
+}

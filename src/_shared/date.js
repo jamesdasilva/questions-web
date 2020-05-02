@@ -11,7 +11,7 @@ const DateFormated = (props) => {
       <span className="date__icon">
         <FontAwesomeIcon icon={faCalendarAlt} size="1x" />
       </span>
-      { `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}` }
+      { `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}` }
     </div>
   );
 };
