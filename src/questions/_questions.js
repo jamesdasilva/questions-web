@@ -5,7 +5,7 @@ import ToSearch from './to-search';
 import ToPaginate from './to-paginate';
 import ToSort from './to-sort';
 
-import { getQuestions, postQuestion } from '../_api/questions-api';
+import { getQuestions, postQuestion, putQuestion } from '../_api/questions-api';
 
 import './_questions.scss';
 
@@ -33,7 +33,21 @@ const Questions = () => {
   }
 
   const submitHandler = (questionText) => {
-    postQuestion(questionText, 'user teste').then(res => console.log('res ', res));
+    postQuestion(questionText, 'user teste').then(res => {
+      getQuestions(queryText, keys[sortKey], 5, page).then(data => {
+        setNumberTotalOfquestions(data.headers['x-total-count']);
+        setQuestions(data.data);
+      });
+    });
+  }
+
+  const likeHandler = (q) => {
+    putQuestion(q.id, q.text, q.user, q.likesCount, q.creationDate).then(res => {
+      getQuestions(queryText, keys[sortKey], 5, page).then(data => {
+        setNumberTotalOfquestions(data.headers['x-total-count']);
+        setQuestions(data.data);
+      });
+    });
   }
 
   return (
@@ -50,7 +64,9 @@ const Questions = () => {
             key={ q.id } 
             id={ q.id } 
             author={ q.user } 
-            date={ q.creationDate }>{ q.text }</Question>
+            creationDate={ q.creationDate }
+            likesCount={ q.likesCount || 0 }
+            onLike={ likeHandler }>{ q.text }</Question>
         )
       }
       <ToPaginate

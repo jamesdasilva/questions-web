@@ -20,10 +20,11 @@
       "creationDate": "2018-01-21T14:21:38.000Z"
     },
     {
-      "id": 4,
       "text": "Voluptatem consectetur voluptas autem dicta ipsam fugit voluptatum dolores ab. Quis amet hic et dolorem. Ut suscipit sint excepturi saepe quis. Odit id voluptatem ab officia officia.",
       "user": "rerum",
-      "creationDate": "2015-04-13T01:46:00.000Z"
+      "likesCount": 3,
+      "creationDate": "2015-04-13T01:46:00.000Z",
+      "id": 4
     },
     {
       "id": 5,
@@ -44,10 +45,11 @@
       "creationDate": "2018-10-07T22:27:16.000Z"
     },
     {
-      "id": 8,
       "text": "Perspiciatis officiis et. Magni ex totam cumque accusantium aliquam molestias ipsam delectus qui. Inventore ut id tenetur aspernatur voluptatem et qui repudiandae velit.",
       "user": "sint",
-      "creationDate": "2015-09-02T23:28:42.000Z"
+      "likesCount": 4,
+      "creationDate": "2015-09-02T23:28:42.000Z",
+      "id": 8
     },
     {
       "id": 9,
@@ -337,6 +339,38 @@
       "creationDate": "2020-05-02T13:32:33.474Z",
       "likesCount": 7,
       "id": 56
+    },
+    {
+      "text": "",
+      "user": "user teste",
+      "creationDate": "2020-05-02T21:00:18.950Z",
+      "id": 57
+    },
+    {
+      "text": "",
+      "user": "user teste",
+      "likesCount": 1,
+      "creationDate": "2020-05-02T21:10:28.715Z",
+      "id": 58
+    },
+    {
+      "text": "",
+      "user": "user teste",
+      "likesCount": 2,
+      "creationDate": "2020-05-02T21:10:31.701Z",
+      "id": 59
+    },
+    {
+      "text": "sadsadas",
+      "likesCount": 10,
+      "creationDate": "2020-05-02T21:10:36.710Z",
+      "id": 60
+    },
+    {
+      "text": "teste",
+      "user": "user teste",
+      "creationDate": "2020-05-02T21:30:25.946Z",
+      "id": 61
     }
   ],
   "answers": [

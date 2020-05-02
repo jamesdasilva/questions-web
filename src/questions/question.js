@@ -10,8 +10,13 @@ import './question.scss';
 
 const Question = (props) => {
   const likeClickHandler = () => {
-    console.log('clickHandler');
-    props.click();
+    props.onLike({
+      id: props.id,
+      text: props.children,
+      user: props.author,
+      creationDate: props.creationDate,
+      likesCount: props.likesCount + 1
+    });
   }
   return (
     <section className="question">
@@ -21,8 +26,8 @@ const Question = (props) => {
       <div className="question__info-actions">
         <div className="question__info-actions__left-box">
           <Author> { props.author } </Author>
-          <DateFormated> { props.date } </DateFormated>
-          <ToLike click={ likeClickHandler }>12</ToLike>
+          <DateFormated> { props.creationDate } </DateFormated>
+          <ToLike click={ likeClickHandler }>{ props.likesCount }</ToLike>
           <AmountOfComments id={ props.id }>12</AmountOfComments>
         </div>
         <Link to={`/answers/${props.id}`} className="question__answer">responder</Link>

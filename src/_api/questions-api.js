@@ -20,3 +20,6 @@ export const postQuestion = (text, user) => {
   return axios.post('http://localhost:3000/questions', { text, user, creationDate } );
 }
 
+export const putQuestion = (id, text, user, likesCount, creationDate) => {
+  return axios.put(`http://localhost:3000/questions/${id}`, { text, user, likesCount, creationDate } );
+}
