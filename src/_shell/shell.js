@@ -14,7 +14,7 @@ const Shell = () => {
       <div className="header">
         <div className="header__container">
           <div className="header__title">
-            <FontAwesomeIcon icon={faCommentDots} size="1x" /> Answer!
+            <FontAwesomeIcon icon={faCommentDots} size="1x" /> Questions!
           </div>
           <div className="header__config">
             <FontAwesomeIcon icon={faCog} size="1x" />

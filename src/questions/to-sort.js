@@ -11,12 +11,11 @@ const ToSort = (props) => {
   }
   return (
     <div className="to-sort">
-      ordenar por:
-      <div className={setClassKey('data de criação')} onClick={onClickHandler}>
-        data de criação
+      <div className={setClassKey('mais recentes')} onClick={onClickHandler}>
+        mais recentes
       </div>
-      <div className={setClassKey('número de curtidas')} onClick={onClickHandler}>
-        número de curtidas
+      <div className={setClassKey('mais populares')} onClick={onClickHandler}>
+        mais populares
       </div>
     </div>
   );

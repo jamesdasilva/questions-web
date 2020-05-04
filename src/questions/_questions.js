@@ -12,13 +12,13 @@ import './_questions.scss';
 const Questions = () => {
   const [questions, setQuestions] = useState([]);
   const [numberTotalOfquestions, setNumberTotalOfquestions] = useState(0);
-  const [sortKey, setSortKey] = useState('data de criação');
+  const [sortKey, setSortKey] = useState('mais recentes');
   const [queryText, setQueryText] = useState('');
   const [page, setPage] = useState(1);
 
   const keys = { };
-  keys['data de criação'] = 'creationDate';
-  keys['número de curtidas'] = 'likesCount';
+  keys['mais recentes'] = 'creationDate';
+  keys['mais populares'] = 'likesCount';
 
   useEffect(() => {
     getQuestions(queryText, keys[sortKey], 5, page).then(data => {
@@ -37,6 +37,9 @@ const Questions = () => {
       getQuestions(queryText, keys[sortKey], 5, page).then(data => {
         setNumberTotalOfquestions(data.data.length);
         setQuestions(data.data.data);
+        setSortKey('mais recentes');
+        setPage(1);
+        setQueryText('');
       });
     });
   }

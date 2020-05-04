@@ -7,6 +7,7 @@ const ToReply = (props) => {
   const submit = (e) => {
     e.preventDefault();
     props.submit(answerText);
+    setAnswerText('');
   }
   return (
     <form className="to-reply">
