@@ -6,16 +6,23 @@ import Author from '../_shared/author';
 
 import './answer.scss';
 
-const Answer = () => {
+const Answer = (props) => {
+  const likeClickHandler = () => {
+    props.onLike({
+      id: props.answer._id,
+      text: props.answer.text,
+      likesCount: props.answer.likesCount + 1
+    });
+  }
   return (
     <section className="answer">
       <p className="answer__content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in enim justo. Ut mauris risus, cursus dictum suscipit sit amet, dictum id magna. Nulla molestie fringilla turpis, non venenatis augue dignissim id.
+        { props.answer.text }
       </p>
       <div className="answer__info">
-        <Author />
-        <DateFormated>teste</DateFormated>
-        <ToLike />
+        <Author>{ props.answer.user }</Author>
+        <DateFormated>{ props.answer.creationDate }</DateFormated>
+        <ToLike click={ likeClickHandler }>{ props.answer.likesCount }</ToLike>
       </div>
     </section>
   );

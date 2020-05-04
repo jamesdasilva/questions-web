@@ -1,20 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './to-reply.scss';
 
-const ToReply = () => {
+const ToReply = (props) => {
+  const [answerText, setAnswerText] = useState('');
+  const submit = (e) => {
+    e.preventDefault();
+    props.submit(answerText);
+  }
   return (
     <form className="to-reply">
-      <div className="to-reply__form-row">
-        <textarea 
-          className="to-reply__input"
-          placeholder="Escreva uma resposta..."
-          rows="1"></textarea>
-        <input className="to-reply__submit-btn" type="submit" value="Responder" />
-      </div>
-      <div className="to-reply__form-row">
-        
-      </div>
+      <textarea 
+        className="to-reply__input"
+        placeholder="Escreva uma resposta..."
+        onChange={ (e) => setAnswerText(e.target.value) }
+        value={ answerText }
+        rows="1"></textarea>
+      <button 
+        className="to-reply__submit-btn"
+        onClick={ submit }>responder</button>
     </form>
   );
 };

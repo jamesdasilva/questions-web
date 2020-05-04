@@ -25,7 +25,7 @@ const Shell = () => {
         <div className="content__container">
           <Switch>
             <Route exact path="/" component={Questions} />
-            <Route exact path="/answers/:id" component={Answers} />
+            <Route exact path="/:id/answers" component={Answers} />
           </Switch>
         </div>
       </div>

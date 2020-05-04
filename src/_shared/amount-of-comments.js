@@ -8,7 +8,7 @@ import './amount-of-comments.scss';
 const AmountOfComments = (props) => {
   return (
     <h5 className="amount-of-comments">
-      <Link to={`/answers/${props.id}`}>
+      <Link to={`/${props.id}/answers`}>
         <span className="amount-of-comments__icon">
           <FontAwesomeIcon icon={faCommentDots} size="1x" />
         </span> { props.children } Comments

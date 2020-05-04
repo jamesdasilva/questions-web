@@ -5,13 +5,13 @@ import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import './date.scss';
 
 const DateFormated = (props) => {
-  const date = new Date(props.children[1]);
+  const date = new Date(props.children);
   return (
     <div className="date">
       <span className="date__icon">
         <FontAwesomeIcon icon={faCalendarAlt} size="1x" />
       </span>
-      { `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}` }
+      { `${('0' + date.getDate()).slice(-2)}/${('0' + (date.getMonth() + 1)).slice(-2)}/${date.getFullYear()}` }
     </div>
   );
 };

@@ -18,12 +18,12 @@ const Questions = () => {
 
   const keys = { };
   keys['data de criação'] = 'creationDate';
-  keys['número de curtidas'] = 'id';
+  keys['número de curtidas'] = 'likesCount';
 
   useEffect(() => {
     getQuestions(queryText, keys[sortKey], 5, page).then(data => {
-      setNumberTotalOfquestions(data.headers['x-total-count']);
-      setQuestions(data.data);
+      setNumberTotalOfquestions(data.data.length);
+      setQuestions(data.data.data);
     });
   }, [queryText, sortKey, page]);
 
@@ -35,17 +35,17 @@ const Questions = () => {
   const submitHandler = (questionText) => {
     postQuestion(questionText, 'user teste').then(res => {
       getQuestions(queryText, keys[sortKey], 5, page).then(data => {
-        setNumberTotalOfquestions(data.headers['x-total-count']);
-        setQuestions(data.data);
+        setNumberTotalOfquestions(data.data.length);
+        setQuestions(data.data.data);
       });
     });
   }
 
   const likeHandler = (q) => {
-    putQuestion(q.id, q.text, q.user, q.likesCount, q.creationDate).then(res => {
+    putQuestion(q.id, q.text, q.likesCount).then(res => {
       getQuestions(queryText, keys[sortKey], 5, page).then(data => {
-        setNumberTotalOfquestions(data.headers['x-total-count']);
-        setQuestions(data.data);
+        setNumberTotalOfquestions(data.data.length);
+        setQuestions(data.data.data);
       });
     });
   }
@@ -60,12 +60,9 @@ const Questions = () => {
       </ToSearch>
       {
         questions.map(
-          (q) => <Question 
-            key={ q.id } 
-            id={ q.id } 
-            author={ q.user } 
-            creationDate={ q.creationDate }
-            likesCount={ q.likesCount || 0 }
+            (q) => <Question 
+            key={ q._id } 
+            q={ q }
             onLike={ likeHandler }>{ q.text }</Question>
         )
       }

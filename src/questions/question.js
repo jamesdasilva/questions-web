@@ -4,18 +4,17 @@ import { Link } from 'react-router-dom';
 import ToLike from '../_shared/to-like';
 import DateFormated from '../_shared/date';
 import Author from '../_shared/author';
-import AmountOfComments from '../_shared/amount-of-comments'
+import AmountOfComments from '../_shared/amount-of-comments';
 
 import './question.scss';
 
 const Question = (props) => {
+  const { q } = props;
   const likeClickHandler = () => {
     props.onLike({
-      id: props.id,
+      id: q._id,
       text: props.children,
-      user: props.author,
-      creationDate: props.creationDate,
-      likesCount: props.likesCount + 1
+      likesCount: q.likesCount + 1
     });
   }
   return (
@@ -25,12 +24,12 @@ const Question = (props) => {
       </p>
       <div className="question__info-actions">
         <div className="question__info-actions__left-box">
-          <Author> { props.author } </Author>
-          <DateFormated> { props.creationDate } </DateFormated>
-          <ToLike click={ likeClickHandler }>{ props.likesCount }</ToLike>
-          <AmountOfComments id={ props.id }>12</AmountOfComments>
+          <Author> { q.user } </Author>
+          <DateFormated>{ q.creationDate }</DateFormated>
+          <ToLike click={ likeClickHandler }>{ q.likesCount }</ToLike>
+          <AmountOfComments id={ q._id }>{ q.answers.length }</AmountOfComments>
         </div>
-        <Link to={`/answers/${props.id}`} className="question__answer">responder</Link>
+        <Link to={`/${ q._id }/answers`} className="question__answer">responder</Link>
       </div>
     </section>
   );
