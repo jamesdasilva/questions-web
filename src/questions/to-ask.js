@@ -7,6 +7,7 @@ const ToAsk = (props) => {
   const submit = (e) => {
     e.preventDefault();
     props.submit(questionText);
+    setQuestionText('');
   }
   return (
     <form className="to-ask">
