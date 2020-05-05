@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 
+import { useQuestion } from '../_context/questions';
+
 import './to-ask.scss';
 
-const ToAsk = (props) => {
+const ToAsk = () => {
   const [questionText, setQuestionText] = useState('');
+  const { createNewQuestion } = useQuestion();
+  
   const submit = (e) => {
     e.preventDefault();
-    props.submit(questionText);
+    createNewQuestion(questionText);
     setQuestionText('');
   }
   return (

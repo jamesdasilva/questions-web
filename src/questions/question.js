@@ -6,15 +6,18 @@ import DateFormated from '../_shared/date';
 import Author from '../_shared/author';
 import AmountOfComments from '../_shared/amount-of-comments';
 
+import { useQuestion } from '../_context/questions';
+
 import './question.scss';
 
 const Question = (props) => {
   const { q } = props;
+  const { likeQuestion } = useQuestion();
   const likeClickHandler = () => {
-    props.onLike({
+    likeQuestion({
       id: q._id,
       text: props.children,
-      likesCount: q.likesCount + 1
+      likesCount: q.likesCount
     });
   }
   return (

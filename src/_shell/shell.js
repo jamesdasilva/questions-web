@@ -6,6 +6,8 @@ import { Switch, Route } from 'react-router-dom';
 import Questions from '../questions/_questions';
 import Answers from '../answers/_answers';
 
+import QuestionsProvider from '../_context/questions';
+
 import './shell.scss';
 
 const Shell = () => {
@@ -23,10 +25,12 @@ const Shell = () => {
       </div>
       <div className="content">
         <div className="content__container">
-          <Switch>
-            <Route exact path="/" component={Questions} />
-            <Route exact path="/:id/answers" component={Answers} />
-          </Switch>
+          <QuestionsProvider>
+            <Switch>
+              <Route exact path="/" component={Questions} />
+              <Route exact path="/:id/answers" component={Answers} />
+            </Switch>
+          </QuestionsProvider>
         </div>
       </div>
     </div>

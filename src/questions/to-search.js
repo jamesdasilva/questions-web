@@ -2,11 +2,14 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
+import { useSearch } from '../_context/questions';
+
 import './to-search.scss';
 
-const ToSearch = (props) => {
+const ToSearch = () => {
+  const { setSearch, queryText } = useSearch();
   const onChangeHandler = (e) => {
-    props.change(e.target.value);
+    setSearch(e.target.value);
   }
   return (
     <form className="to-search">
@@ -17,7 +20,7 @@ const ToSearch = (props) => {
         className="to-search__input"
         type="text"
         placeholder="Pequisar..."
-        value={ props.children }
+        value={ queryText }
         onChange={ onChangeHandler  } />
     </form>
   );
