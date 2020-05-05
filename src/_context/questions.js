@@ -37,7 +37,7 @@ export default function QuestionsProvider({ children }) {
   }, [queryText, sortKey, page]);
 
   useEffect(() => {
-    refreshAnswers();
+    if(questionSelectId) refreshAnswers();
   }, [questionSelectId]);
 
   const setSearch = (term) => {
