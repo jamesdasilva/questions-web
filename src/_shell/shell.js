@@ -21,7 +21,8 @@ const Shell = () => {
           </div>
           <div className="header__config">
             <FontAwesomeIcon icon={faUser} size="1x" />
-            <input 
+            <input
+              data-testid="user" 
               type="text" 
               onChange={ (e) => setUser(e.target.value) }
               value={ user }
