@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import ToReply from './to-reply';
 import Answer from './answer';
@@ -11,7 +11,11 @@ import { useQuestion } from '../_context/questions';
 import './_answers.scss';
 
 const Answers = (props) => {
-  const { setQuestionSelectId, question, answers, likeQuestionAndRefreshQuestion } = useQuestion();
+  const { 
+    setQuestionSelectId, 
+    question, 
+    answers, 
+    likeQuestionAndRefreshQuestion } = useQuestion();
 
   useEffect(() => {
     setQuestionSelectId(props.match.params.id);
@@ -19,12 +23,6 @@ const Answers = (props) => {
 
   const likeClickHandler = () => {
     likeQuestionAndRefreshQuestion(question);
-  //   putQuestion(question._id, question.text, question.likesCount + 1).then(res => {
-  //     getQuestion(props.match.params.id).then(resp => {
-  //       setQuestion(resp.data);
-  //       setAnswers(resp.data.answers);
-  //     });
-  //   });
   }
 
   return (

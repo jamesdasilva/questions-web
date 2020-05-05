@@ -1,16 +1,17 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCommentDots, faCog } from '@fortawesome/free-solid-svg-icons';
+import { faCommentDots, faUser } from '@fortawesome/free-solid-svg-icons';
 import { Switch, Route } from 'react-router-dom';
+
+import { useUser } from '../_context/questions';
 
 import Questions from '../questions/_questions';
 import Answers from '../answers/_answers';
 
-import QuestionsProvider from '../_context/questions';
-
 import './shell.scss';
 
 const Shell = () => {
+  const { user, setUser } = useUser();
   return (
     <div className="shell">
       <div className="header">
@@ -19,18 +20,21 @@ const Shell = () => {
             <FontAwesomeIcon icon={faCommentDots} size="1x" /> Questions!
           </div>
           <div className="header__config">
-            <FontAwesomeIcon icon={faCog} size="1x" />
+            <FontAwesomeIcon icon={faUser} size="1x" />
+            <input 
+              type="text" 
+              onChange={ (e) => setUser(e.target.value) }
+              value={ user }
+              placeholder="Identifique-se" />
           </div>
         </div>
       </div>
       <div className="content">
         <div className="content__container">
-          <QuestionsProvider>
-            <Switch>
-              <Route exact path="/" component={Questions} />
-              <Route exact path="/:id/answers" component={Answers} />
-            </Switch>
-          </QuestionsProvider>
+          <Switch>
+            <Route exact path="/" component={Questions} />
+            <Route exact path="/:id/answers" component={Answers} />
+          </Switch>
         </div>
       </div>
     </div>

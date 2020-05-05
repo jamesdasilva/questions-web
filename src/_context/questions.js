@@ -13,6 +13,7 @@ export default function QuestionsProvider({ children }) {
   const [questionSelectId, setQuestionSelectId] = useState(undefined);
   const [question, setQuestion] = useState([]);
   const [answers, setAnswers] = useState([]);
+  const [user, setUser] = useState('');
 
   const keys = { };
   keys['mais recentes'] = 'creationDate';
@@ -42,7 +43,7 @@ export default function QuestionsProvider({ children }) {
   }
 
   const createNewQuestion = (questionText) => {
-    postQuestion(questionText, 'user teste').then(res => {
+    postQuestion(questionText, user).then(res => {
       getQuestions(queryText, keys[sortKey], 5, page).then(data => {
         setNumberTotalOfquestions(data.data.length);
         setQuestions(data.data.data);
@@ -54,7 +55,7 @@ export default function QuestionsProvider({ children }) {
   }
 
   const createAnswer = (questionText) => {
-    postAnswer(questionSelectId, 'user teste', questionText).then(res => {
+    postAnswer(questionSelectId, user, questionText).then(res => {
       getQuestion(questionSelectId).then(resp => {
         setQuestion(resp.data);
         setAnswers(resp.data.answers);
@@ -113,9 +114,17 @@ export default function QuestionsProvider({ children }) {
         setAnswers,
         createAnswer,
         likeAnswer,
-        likeQuestionAndRefreshQuestion
+        likeQuestionAndRefreshQuestion,
+        user,
+        setUser
       }}>{ children }</QuestionsContext.Provider>
   );
+}
+
+export function useUser() {
+  const context = useContext(QuestionsContext);
+  const { user, setUser } = context;
+  return { user, setUser };
 }
 
 export function useQuestions() {

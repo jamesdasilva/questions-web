@@ -24,8 +24,32 @@
     color: #F94A3F;
   }
   &__config {
-    font-size: 30px;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
     color: #F94A3F;
+    input {
+      box-sizing: border-box;
+      width: 120px;
+      height: 30px;
+      padding-top: 4px;
+      padding-left: 6px;
+      margin-left: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      line-height: 16px;
+      font-family: 'Baloo Bhaina 2', cursive;
+      color: #878A8C;
+      &:focus {
+        outline: none;
+        box-shadow: 0;
+        border: 1px solid #F94A3F;
+      }
+      &::placeholder {
+        color: #ccc;
+      }
+    }
   }
 }
 .content {

@@ -4,15 +4,19 @@ import { createBrowserHistory } from "history";
 
 const customHistory = createBrowserHistory();
 
+import QuestionsProvider from './_context/questions';
+
 import Shell from './_shell/shell';
 
 import './app.scss';
 
 const App = () => {
   return (
-    <BrowserRouter history={customHistory} >
-      <Shell />
-    </BrowserRouter>
+    <QuestionsProvider>
+      <BrowserRouter history={customHistory} >
+        <Shell />
+      </BrowserRouter>
+    </QuestionsProvider>
   );
 };
 
