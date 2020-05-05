@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 
+import { useQuestion } from '../_context/questions';
+
 import './to-reply.scss';
 
-const ToReply = (props) => {
+const ToReply = () => {
   const [answerText, setAnswerText] = useState('');
+  const { createAnswer } = useQuestion();
   const submit = (e) => {
     e.preventDefault();
-    props.submit(answerText);
+    createAnswer(answerText);
     setAnswerText('');
   }
   return (

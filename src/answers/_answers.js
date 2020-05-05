@@ -6,47 +6,27 @@ import ToLike from '../_shared/to-like';
 import DateFormated from '../_shared/date';
 import Author from '../_shared/author';
 
-import { getQuestion, postAnswer, putQuestion, putAnswer } from '../_api/questions-api';
+import { useQuestion } from '../_context/questions';
 
 import './_answers.scss';
 
 const Answers = (props) => {
-  const [question, setQuestion] = useState([]);
-  const [answers, setAnswers] = useState([]);
+  const { setQuestionSelectId, question, answers, likeQuestionAndRefreshQuestion } = useQuestion();
 
   useEffect(() => {
-    getQuestion(props.match.params.id).then(resp => {
-      setQuestion(resp.data);
-      setAnswers(resp.data.answers)
-    });
-  }, [ ]);
-
-  const submitHandler = (questionText) => {
-    postAnswer(props.match.params.id, 'user teste', questionText).then(res => {
-      getQuestion(props.match.params.id).then(resp => {
-        setQuestion(resp.data);
-        setAnswers(resp.data.answers);
-      });
-    });
-  }
-
-  const likeHandler = (q) => {
-    putAnswer(props.match.params.id, q.id, q.text, q.likesCount).then(res => {
-      getQuestion(props.match.params.id).then(resp => {
-        setQuestion(resp.data);
-        setAnswers(resp.data.answers);
-      });
-    });
-  }
+    setQuestionSelectId(props.match.params.id);
+  }, []);
 
   const likeClickHandler = () => {
-    putQuestion(question._id, question.text, question.likesCount + 1).then(res => {
-      getQuestion(props.match.params.id).then(resp => {
-        setQuestion(resp.data);
-        setAnswers(resp.data.answers);
-      });
-    });
+    likeQuestionAndRefreshQuestion(question);
+  //   putQuestion(question._id, question.text, question.likesCount + 1).then(res => {
+  //     getQuestion(props.match.params.id).then(resp => {
+  //       setQuestion(resp.data);
+  //       setAnswers(resp.data.answers);
+  //     });
+  //   });
   }
+
   return (
     <div className="answers">
       <p className="answers__content">
@@ -57,8 +37,8 @@ const Answers = (props) => {
         <DateFormated>{ question.creationDate }</DateFormated>
         <ToLike click={ likeClickHandler }>{ question.likesCount }</ToLike>
       </div>
-      <ToReply submit={ submitHandler } />
-      { answers && answers.map( answer => <Answer key={ answer._id } onLike={ likeHandler } answer={answer} /> ) }
+      <ToReply />
+      { answers && answers.map( answer => <Answer key={ answer._id } answer={answer} /> ) }
     </div>
   );
 };

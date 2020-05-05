@@ -4,14 +4,17 @@ import ToLike from '../_shared/to-like';
 import DateFormated from '../_shared/date';
 import Author from '../_shared/author';
 
+import { useQuestion } from '../_context/questions';
+
 import './answer.scss';
 
 const Answer = (props) => {
+  const { likeAnswer } = useQuestion();
   const likeClickHandler = () => {
-    props.onLike({
-      id: props.answer._id,
+    likeAnswer({
+      _id: props.answer._id,
       text: props.answer.text,
-      likesCount: props.answer.likesCount + 1
+      likesCount: props.answer.likesCount
     });
   }
   return (

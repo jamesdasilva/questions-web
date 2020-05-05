@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-import { getQuestions, postQuestion, putQuestion } from '../_api/questions-api';
+import { getQuestion, getQuestions, postQuestion, putQuestion, postAnswer, putAnswer } from '../_api/questions-api';
 
 export const QuestionsContext = createContext();
 
@@ -10,18 +10,31 @@ export default function QuestionsProvider({ children }) {
   const [sortKey, setSortKey] = useState('mais recentes');
   const [queryText, setQueryText] = useState('');
   const [page, setPage] = useState(1);
+  const [questionSelectId, setQuestionSelectId] = useState(undefined);
+  const [question, setQuestion] = useState([]);
+  const [answers, setAnswers] = useState([]);
 
   const keys = { };
   keys['mais recentes'] = 'creationDate';
   keys['mais populares'] = 'likesCount';
 
+  const refreshQuestions = () => {
+
+  }
+
   useEffect(() => {
-    console.log('useEffects ----');
     getQuestions(queryText, keys[sortKey], 5, page).then(data => {
       setNumberTotalOfquestions(data.data.length);
       setQuestions(data.data.data);
     });
   }, [queryText, sortKey, page]);
+
+  useEffect(() => {
+    getQuestion(questionSelectId).then(resp => {
+      setQuestion(resp.data);
+      setAnswers(resp.data.answers)
+    });
+  }, [questionSelectId]);
 
   const setSearch = (term) => {
     setQueryText(term);
@@ -36,6 +49,33 @@ export default function QuestionsProvider({ children }) {
         setSortKey('mais recentes');
         setPage(1);
         setQueryText('');
+      });
+    });
+  }
+
+  const createAnswer = (questionText) => {
+    postAnswer(questionSelectId, 'user teste', questionText).then(res => {
+      getQuestion(questionSelectId).then(resp => {
+        setQuestion(resp.data);
+        setAnswers(resp.data.answers);
+      });
+    });
+  }
+
+  const likeAnswer = (q) => {
+    putAnswer(questionSelectId, q._id, q.text, q.likesCount + 1).then(res => {
+      getQuestion(questionSelectId).then(resp => {
+        setQuestion(resp.data);
+        setAnswers(resp.data.answers);
+      });
+    });
+  }
+
+  const likeQuestionAndRefreshQuestion = (q) => {
+    putQuestion(q._id, q.text, q.likesCount + 1).then(res => {
+      getQuestion(questionSelectId).then(resp => {
+        setQuestion(resp.data);
+        setAnswers(resp.data.answers);
       });
     });
   }
@@ -64,7 +104,16 @@ export default function QuestionsProvider({ children }) {
         setPage,
         setSearch,
         createNewQuestion,
-        likeQuestion
+        likeQuestion,
+        questionSelectId,
+        setQuestionSelectId,
+        question,
+        setQuestion,
+        answers, 
+        setAnswers,
+        createAnswer,
+        likeAnswer,
+        likeQuestionAndRefreshQuestion
       }}>{ children }</QuestionsContext.Provider>
   );
 }
@@ -82,6 +131,8 @@ export function useSearch() {
 
 export function useQuestion() {
   const context = useContext(QuestionsContext);
-  const { createNewQuestion, likeQuestion } = context;
-  return { createNewQuestion, likeQuestion };
+  const { createNewQuestion, likeQuestion, likeQuestionAndRefreshQuestion,
+    setQuestionSelectId, createAnswer, question, answers, likeAnswer } = context;
+  return { createNewQuestion, likeQuestion, likeQuestionAndRefreshQuestion,
+    setQuestionSelectId, createAnswer, question, answers, likeAnswer };
 }
