@@ -15,6 +15,7 @@ const ToReply = () => {
   return (
     <form className="to-reply">
       <textarea 
+        data-testid="toReply"
         className="to-reply__input"
         placeholder="Escreva uma resposta..."
         onChange={ (e) => setAnswerText(e.target.value) }
