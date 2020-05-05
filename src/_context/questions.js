@@ -20,21 +20,24 @@ export default function QuestionsProvider({ children }) {
   keys['mais populares'] = 'likesCount';
 
   const refreshQuestions = () => {
-
-  }
-
-  useEffect(() => {
     getQuestions(queryText, keys[sortKey], 5, page).then(data => {
       setNumberTotalOfquestions(data.data.length);
       setQuestions(data.data.data);
     });
-  }, [queryText, sortKey, page]);
+  }
 
-  useEffect(() => {
+  const refreshAnswers = () => {
     getQuestion(questionSelectId).then(resp => {
       setQuestion(resp.data);
       setAnswers(resp.data.answers)
     });
+  }
+  useEffect(() => {
+    refreshQuestions();
+  }, [queryText, sortKey, page]);
+
+  useEffect(() => {
+    refreshAnswers();
   }, [questionSelectId]);
 
   const setSearch = (term) => {
@@ -44,49 +47,37 @@ export default function QuestionsProvider({ children }) {
 
   const createNewQuestion = (questionText) => {
     postQuestion(questionText, user).then(res => {
-      getQuestions(queryText, keys[sortKey], 5, page).then(data => {
-        setNumberTotalOfquestions(data.data.length);
-        setQuestions(data.data.data);
+      setPage(1);
+      setQueryText('');
+      if(sortKey != 'mais recentes') {
         setSortKey('mais recentes');
-        setPage(1);
-        setQueryText('');
-      });
+      } else {
+        refreshQuestions();
+      }
     });
   }
 
   const createAnswer = (questionText) => {
     postAnswer(questionSelectId, user, questionText).then(res => {
-      getQuestion(questionSelectId).then(resp => {
-        setQuestion(resp.data);
-        setAnswers(resp.data.answers);
-      });
+      refreshAnswers();
     });
   }
 
   const likeAnswer = (q) => {
     putAnswer(questionSelectId, q._id, q.text, q.likesCount + 1).then(res => {
-      getQuestion(questionSelectId).then(resp => {
-        setQuestion(resp.data);
-        setAnswers(resp.data.answers);
-      });
+      refreshAnswers();
     });
   }
 
   const likeQuestionAndRefreshQuestion = (q) => {
     putQuestion(q._id, q.text, q.likesCount + 1).then(res => {
-      getQuestion(questionSelectId).then(resp => {
-        setQuestion(resp.data);
-        setAnswers(resp.data.answers);
-      });
+      refreshAnswers();
     });
   }
 
   const likeQuestion = (q) => {
     putQuestion(q.id, q.text, q.likesCount + 1).then(res => {
-      getQuestions(queryText, keys[sortKey], 5, page).then(data => {
-        setNumberTotalOfquestions(data.data.length);
-        setQuestions(data.data.data);
-      });
+      refreshQuestions();
     });
   }
 
