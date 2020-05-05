@@ -11,25 +11,25 @@ export const getQuestions = (query, sortKey, limit, page) => {
     '_order=desc'
   ];
   const queryString = params.filter(item => item).reduce((pre, curr) => pre + '&' + curr);
-  return axios.get(`${URI}questions${queryString ? '?' + queryString : '' }`);
+  return axios.get(`${URI}api/questions${queryString ? '?' + queryString : '' }`);
 }
 
 export const getQuestion = (id) => {
-  return axios.get(`${URI}questions/${id}`).then(resp => resp.data)
+  return axios.get(`${URI}api/questions/${id}`).then(resp => resp.data)
 }
 
 export const postQuestion = (text, user) => {
-  return axios.post(`${URI}questions`, { text, user } );
+  return axios.post(`${URI}api/questions`, { text, user } );
 }
 
 export const putQuestion = (id, text, likesCount) => {
-  return axios.put(`${URI}questions/${id}`, { text, likesCount } );
+  return axios.put(`${URI}api/questions/${id}`, { text, likesCount } );
 }
 
 export const postAnswer = (questionId, user, text) => {
-  return axios.post(`${URI}questions/${questionId}/answers`, { user, text } );
+  return axios.post(`${URI}api/questions/${questionId}/answers`, { user, text } );
 }
 
 export const putAnswer = (questionId, answerId, text, likesCount) => {
-  return axios.put(`${URI}questions/${questionId}/answers/${answerId}`, { text, likesCount } );
+  return axios.put(`${URI}api/questions/${questionId}/answers/${answerId}`, { text, likesCount } );
 }
