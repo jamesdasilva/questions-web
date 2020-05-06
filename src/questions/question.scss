@@ -9,6 +9,7 @@
   border-radius: 4px;
   background-color: #fff;
   &__content {
+    box-sizing: border-box;
     margin: 0;
     margin-bottom: 10px;
     line-height: 24px;
@@ -22,6 +23,7 @@
     }
   }
   &__info-actions {
+    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -59,5 +61,25 @@
   }
   &__icon {
     margin-right: 6px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .question {
+    padding: 10px;
+    &__info-actions {
+      flex-direction: column;
+      &__left-box {
+        width: 100%;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+    &__answer {
+      box-sizing: border-box;
+      width: 100%;
+      text-align: center;
+    }
   }
 }

@@ -11,7 +11,7 @@ const AmountOfComments = (props) => {
       <Link to={`/${props.id}/answers`}>
         <span className="amount-of-comments__icon">
           <FontAwesomeIcon icon={faCommentDots} size="1x" />
-        </span> { props.children } Comments
+        </span> { props.children }
       </Link>
     </h5>
   );

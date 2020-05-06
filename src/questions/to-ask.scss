@@ -55,3 +55,16 @@
     }
   }
 }
+
+@media only screen and (max-width: 480px) {
+  .to-ask { 
+    flex-direction: column;
+    &__input-ask {
+      width: 100%;
+      margin-bottom: 5px;
+    }
+    &__submit-btn {
+      width: 100%;
+    }
+  }
+}

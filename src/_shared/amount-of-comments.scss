@@ -21,3 +21,11 @@
     margin-right: 6px;
   }
 }
+
+@media only screen and (max-width: 480px) {
+  .amount-of-comments {
+    margin: 0;
+    display: flex;
+    font-size: 12px;
+  }
+}

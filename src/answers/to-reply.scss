@@ -54,3 +54,17 @@
     }
   }
 }
+
+@media only screen and (max-width: 480px) {
+  .to-reply {
+    flex-direction: column;
+    &__input {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    &__submit-btn {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}

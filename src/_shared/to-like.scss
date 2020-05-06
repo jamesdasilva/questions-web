@@ -17,3 +17,10 @@
     margin-right: 6px;
   }
 }
+
+@media only screen and (max-width: 480px) {
+  .to-like {
+    display: flex;
+    font-size: 12px;
+  }
+}
