@@ -16,12 +16,15 @@ Para iniciar esta aplicação, execute o comando
 ```
 npm run start
 ```
+Para a execução correta da aplicação, a API também deve estar em execução.
+
 ### Testes
 
 Diante da baixa disponibilidade de tempo, foi priorizado os testes funcionais, que verificam a execução global do sistema (back-end + front-end). Para executá-los, use o comando
 ```
 npm run e2e
 ```
+Para a execução correta dos testes funcionais, a API também deve estar em execução.
 
 ### Contruído com
 - [React](https://pt-br.reactjs.org/) - Uma biblioteca JavaScript para criar interfaces de usuário.
