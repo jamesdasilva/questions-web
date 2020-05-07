@@ -10,8 +10,10 @@ const ToAsk = () => {
   
   const submit = (e) => {
     e.preventDefault();
-    createNewQuestion(questionText);
-    setQuestionText('');
+    if(questionText) {
+      createNewQuestion(questionText);
+      setQuestionText('');
+    }
   }
   return (
     <form className="to-ask">

@@ -57,6 +57,11 @@
   &__icon {
     margin-right: 6px;
   }
+  &__empty {
+    text-align: center;
+    font-family: 'Baloo Bhaina 2', cursive;
+    color: #878A8C;
+  }
 }
 
 @media only screen and (max-width: 480px) {

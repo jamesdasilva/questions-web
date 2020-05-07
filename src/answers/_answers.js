@@ -42,7 +42,9 @@ const Answers = (props) => {
         <ToLike click={ likeClickHandler }>{ question.likesCount }</ToLike>
       </div>
       <ToReply />
-      { answers && answers.map( answer => <Answer key={ answer._id } answer={answer} /> ) }
+      { answers && answers.length > 0 ? 
+        answers.map( answer => <Answer key={ answer._id } answer={answer} /> ) : 
+        <div className="answers__empty">seja o primeiro a responder</div> }
     </div>
   );
 };

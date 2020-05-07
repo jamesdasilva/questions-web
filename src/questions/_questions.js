@@ -19,23 +19,28 @@ const Questions = () => {
     setPage
   } = useQuestions();
 
+  const onSelectHandler = (e) => {
+    setPage(1);
+    setSortKey(e);
+  }
+
   return (
     <div className="questions">
       <ToAsk />
-      <ToSort currentKey={sortKey} onSelect={ setSortKey }  />
+      <ToSort currentKey={sortKey} onSelect={ onSelectHandler }  />
       <ToSearch />
-      {
+      { questions && questions.length > 0 ?
         questions.map(
             (q) => <Question 
             key={ q._id } 
             q={ q }>{ q.text }</Question>
-        )
+        ) : <div className="answers__empty">seja o primeiro a responder</div>
       }
-      <ToPaginate
+      { numberTotalOfquestions > 5 && <ToPaginate
         currentPage={ page }
         quantityPerPage= { 5 }
         totalAmount={ numberTotalOfquestions }
-        onPage={ setPage } />
+        onPage={ setPage } /> }
     </div>
   );
 };

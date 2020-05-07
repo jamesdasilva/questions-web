@@ -9,8 +9,10 @@ const ToReply = () => {
   const { createAnswer } = useQuestion();
   const submit = (e) => {
     e.preventDefault();
-    createAnswer(answerText);
-    setAnswerText('');
+    if(answerText){
+      createAnswer(answerText);
+      setAnswerText('');
+    }
   }
   return (
     <form className="to-reply">
