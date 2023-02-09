@@ -26,6 +26,7 @@ npm run e2e
 ```
 Para a execução correta dos testes funcionais, a API também deve estar em execução.
 
+
 ### Contruído com
 - [React](https://pt-br.reactjs.org/) - Uma biblioteca JavaScript para criar interfaces de usuário.
 - [Webpack](https://webpack.js.org/) - Um bundler de módulo estático para aplicativos JavaScript modernos.
